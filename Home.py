@@ -75,7 +75,7 @@ if not st.session_state.logged_in:
 
 else:
     # الترحيب بالمستخدم
-    st.markdown(f"## مرحباً بك د. {st.session_state.user_email.split('@')[0].capitalize()} 👋")
+    st.markdown(f"## Hello. {st.session_state.user_email.split('@')[0].capitalize()} 👋")
     st.balloons()
     
     # صف الأزرار العلوية
@@ -91,10 +91,9 @@ else:
     st.divider()
 
     # # --- قسم الانتقال لصفحة التحليل ---
-    # st.markdown("### 🛠️ الأدوات المتاحة")
-    # c1, c2 = st.columns([1, 2])
-    # with c1:
-    #     st.info("ابدأ الآن بتحليل صور الرنين المغناطيسي وتحديد مكان الورم بدقة.")
+    st.markdown("### 🛠️ الأدوات المتاحة")
+    
+    st.info("ابدأ الآن بتحليل صور الرنين المغناطيسي وتحديد مكان الورم بدقة.")
         # زر للانتقال لصفحة التحليل (يجب أن يكون اسم الملف Tumor_Analysis.py في مجلد pages)
     if st.button("الذهاب إلى صفحة التحليل 🔍", type="primary", use_container_width=True):
           st.page_link("pages/1_Tumor_Analysis.py")
