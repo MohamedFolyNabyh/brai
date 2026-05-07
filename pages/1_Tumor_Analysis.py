@@ -142,4 +142,10 @@ if uploaded_file is not None:
         st.image(seg_res, caption="تحديد منطقة الورم (بالأحمر)", use_container_width=True)
 
     st.divider()
-    st.page_link("Home.py", label="🏠 العودة للرئيسية", icon="⬅️")
+    col1,col2=st.columns(2)
+    with col1:
+        st.page_link("Home.py",icon="⬅️")
+     with col2:   
+         st.page_link("Home.py", label="🏠 العودة للرئيسية", icon="⬅️")
+
+         
