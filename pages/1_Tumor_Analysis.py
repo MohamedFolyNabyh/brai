@@ -146,8 +146,8 @@ if uploaded_file is not None:
     col1, col2 = st.columns(2)
  
     with col1:
-        st.page_link("Home.py",icon="⬅️")
-     with col2:   
+        st.page_link("pages/2_Analytics.py",icon="⬅️")
+    with col2:   
          st.page_link("Home.py", label="🏠 العودة للرئيسية", icon="⬅️")
 
          
