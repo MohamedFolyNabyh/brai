@@ -1,0 +1,25 @@
+[theme]
+# اللون الأساسي (للأزرار والروابط)
+primaryColor = "#243b53"
+
+# لون خلفية الصفحة الرئيسية
+backgroundColor = "#f0f4f8"
+
+# لون خلفية القائمة الجانبية والصناديق
+secondaryBackgroundColor = "#d9e2ec"
+
+# لون النصوص الأساسي
+textColor = "#102a43"
+
+# نوع الخط (يفضل استخدام خطوط نظيفة للمجال الطبي)
+font = "sans serif"
+
+[server]
+# لتعطيل عرض رسائل التحذير في المتصفح عند التشغيل
+headless = true
+enableCORS = false
+enableXsrfProtection = false
+
+[browser]
+# لإخفاء قائمة Streamlit (النقاط الثلاثة في الأعلى) وإخفاء خيار "Make with Streamlit"
+gatherUsageStats = false
