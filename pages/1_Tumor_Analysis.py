@@ -144,9 +144,21 @@ if uploaded_file is not None:
         st.image(seg_res, caption="تحديد منطقة الورم (بالأحمر)", use_container_width=True)
 
 st.divider()
+# --- الانتقالات (تظهر دائماً في أسفل الصفحة) ---
+st.markdown("---") # خط فاصل
+nav_c1, nav_c2 = st.columns(2)
 
-st.page_link("Home.py", label="العودة للرئيسية", icon="🏠")
-st.page_link("2_Analytics.py", label="📊 عرض التقارير", icon="📈")
+with nav_c1:
+    # العودة للرئيسية (تأكد أن الملف اسمه Home.py في المجلد الرئيسي)
+    st.page_link("Home.py", label="العودة للرئيسية", icon="🏠", use_container_width=True)
+
+with nav_c2:
+    # الرابط لصفحة التقارير (تأكد من المسار الفعلي للملف داخل مجلد pages)
+    # ملاحظة: إذا كان الملف داخل مجلد pages، المسار يكون "pages/your_file.py"
+    try:
+        st.page_link("pages/2_Analytics.py", label="عرض التقارير", icon="📈", use_container_width=True)
+    except:
+        st.page_link("Home.py", label="صفحة التقارير غير متوفرة", icon="🚫")
     
 
 
