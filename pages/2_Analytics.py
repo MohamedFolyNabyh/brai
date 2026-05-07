@@ -82,5 +82,12 @@ else:
 
 # 6. التذييل
 st.divider()
-st.page_link("pages/1_Tumor_Analysis.py", label="الذهاب لإجراء فحص جديد", icon="🧠")
-st.page_link("Home.py", label="العودة للرئيسية", icon="🏠")
+col1, col2=columns(2)
+
+with col1:
+    st.page_link("pages/1_Tumor_Analysis.py", label="الذهاب لإجراء فحص جديد", icon="🧠")
+with col2:
+    st.page_link("Home.py", label="العودة للرئيسية", icon="🏠")
+    
+
+
