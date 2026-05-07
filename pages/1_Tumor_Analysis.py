@@ -11,6 +11,8 @@ from datetime import datetime
 # إخفاء التحذيرات لضمان واجهة نظيفة
 warnings.filterwarnings("ignore")
 
+DB_NAME = 'brain_tumor.db'
+
 # 1. إعدادات الصفحة
 st.set_page_config(page_title="BrainScan AI | Diagnosis", layout="wide", page_icon="🧠")
 
