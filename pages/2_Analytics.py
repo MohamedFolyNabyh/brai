@@ -16,7 +16,7 @@ if not st.session_state.get('logged_in', False):
     st.stop()
 
 st.title("📊 سجل التقارير والإحصائيات")
-current_user = st.session_state.get('username', 'Guest')
+current_user = st.session_state.get('user_email', 'Guest')
 st.info(f"مرحباً دكتور {current_user}، إليك ملخص لجميع الحالات التي قمت بفحصها.")
 
 # --- 3. دالة جلب البيانات من قاعدة البيانات ---
