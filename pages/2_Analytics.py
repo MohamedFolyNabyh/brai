@@ -18,6 +18,8 @@ if "pages" in BASE_DIR:
 
 # تحديث اسم قاعدة البيانات ليكون بمسار كامل
 DB_NAME = os.path.join(BASE_DIR, 'brain_tumor.db')
+
+st.write(f"المسار الذي يبحث فيه البرنامج حالياً: {DB_NAME}")
 # 2. التحقق من تسجيل الدخول
 if not st.session_state.get('logged_in', False):
     st.warning("⚠️ يرجى تسجيل الدخول أولاً للوصول إلى التقارير.")
