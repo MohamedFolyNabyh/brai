@@ -144,22 +144,9 @@ if uploaded_file is not None:
         st.image(seg_res, caption="تحديد منطقة الورم (بالأحمر)", use_container_width=True)
 
 st.divider()
-bottom_col1, bottom_col2 = st.columns(2)
 
-with bottom_col1:
-    st.page_link("Home.py", label="العودة للرئيسية", icon="🏠")
-
-with bottom_col2:   
-    # تأكد من أن اسم الملف صحيح في مجلد pages
-    st.page_link("2_Analytics.py", label="📊 عرض التقارير", icon="📈")
+st.page_link("Home.py", label="العودة للرئيسية", icon="🏠")
+st.page_link("2_Analytics.py", label="📊 عرض التقارير", icon="📈")
     
-    # col11, col22 = st.columns(2)
- 
-    # with col11:
-    #     st.page_link("Home.py", label="العودة للرئيسية", icon="🏠")
-    
-    # with col22:   
-    #     # يمكنك تغيير هذا الرابط لصفحة التقارير مثلاً بدلاً من تكرار الرئيسية
-    #     st.page_link("2_Analytics.py", label="📊 عرض التقارير", icon="📈") 
 
 
