@@ -23,7 +23,7 @@ if not st.session_state.get('logged_in', False):
 # --- 3. دالة حفظ النتائج في قاعدة البيانات ---
 def save_patient_history(username, diagnosis, image_name):
     try:
-        conn = sqlite3.connect("users.db")
+        conn = sqlite3.connect(DB_NAME)
         cursor = conn.cursor()
         # إنشاء جدول السجل إذا لم يكن موجوداً
         cursor.execute('''CREATE TABLE IF NOT EXISTS history 
