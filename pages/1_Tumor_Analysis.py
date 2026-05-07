@@ -135,7 +135,7 @@ if uploaded_file is not None:
 
         # --- إضافة زر حفظ الحالة ---
         if st.button("💾 حفظ النتيجة في السجل الطبي"):
-            user_name = st.session_state.get('username', 'Guest')
+            user_name = st.session_state.get('user_emai', 'Guest')
             if save_patient_history(user_name, label_res, uploaded_file.name):
                 st.toast(f"تم حفظ حالة المريض بنجاح يا {user_name}!", icon="✅")
 
