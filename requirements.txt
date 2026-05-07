@@ -3,3 +3,5 @@ tensorflow-cpu
 opencv-python-headless
 gdown
 numpy
+matplotlib
+email-validator
