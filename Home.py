@@ -5,8 +5,13 @@ from email_validator import validate_email, EmailNotValidError
 
 st.set_page_config(page_title="BrainScan AI", layout="wide", page_icon="🧠")
 
-# اسم قاعدة بيانات موحد لكل العمليات
-DB_NAME = 'brain_tumor.db'
+# تحديد مسار المجلد الرئيسي للمشروع
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+if "pages" in BASE_DIR:
+    BASE_DIR = os.path.dirname(BASE_DIR)
+
+# تحديث اسم قاعدة البيانات ليكون بمسار كامل
+DB_NAME = os.path.join(BASE_DIR, 'brain_tumor.db')
 
 # --- الدوال الأساسية ---
 def make_hashes(password):
