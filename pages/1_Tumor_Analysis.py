@@ -11,7 +11,15 @@ from datetime import datetime
 # إخفاء التحذيرات لضمان واجهة نظيفة
 warnings.filterwarnings("ignore")
 
-DB_NAME = 'brain_tumor.db'
+
+
+# تحديد مسار المجلد الرئيسي للمشروع
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+if "pages" in BASE_DIR:
+    BASE_DIR = os.path.dirname(BASE_DIR)
+
+# تحديث اسم قاعدة البيانات ليكون بمسار كامل
+DB_NAME = os.path.join(BASE_DIR, 'brain_tumor.db')
 
 # 1. إعدادات الصفحة
 st.set_page_config(page_title="BrainScan AI | Diagnosis", layout="wide", page_icon="🧠")
