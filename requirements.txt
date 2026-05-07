@@ -5,3 +5,4 @@ gdown
 numpy
 matplotlib
 email-validator
+plotly
