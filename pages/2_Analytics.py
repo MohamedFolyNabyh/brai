@@ -1,19 +1,3 @@
-# import streamlit as st
-# import pandas as pd
-
-# st.title("📊 التقارير والإحصائيات")
-
-# if not st.session_state.get('logged_in', False):
-#     st.warning("يرجى تسجيل الدخول.")
-#     st.stop()
-
-# st.write("هنا يمكنك عرض ملخص للحالات التي تم فحصها.")
-# # يمكنك إضافة رسوم بيانية هنا باستخدام Plotly أو Matplotlib
-# data = pd.DataFrame({
-#     'نوع الورم': ['Glioma', 'Meningioma', 'Pituitary', 'Normal'],
-#     'العدد': [12, 7, 5, 20]
-# })
-# st.bar_chart(data.set_index('نوع الورم'))
 
 
 import streamlit as st
@@ -37,7 +21,7 @@ st.info(f"مرحباً دكتور {current_user}، إليك ملخص لجميع 
 # --- 3. دالة جلب البيانات من قاعدة البيانات ---
 def fetch_user_history(username):
     try:
-        conn = sqlite3.connect("users.db")
+        conn = sqlite3.connect(DB_NAME)
         # قراءة البيانات مباشرة في DataFrame
         query = "SELECT diagnosis as 'نوع التشخيص', date as 'التاريخ', image_name as 'اسم الصورة' FROM history WHERE username = ?"
         df = pd.read_sql_query(query, conn, params=(username,))
