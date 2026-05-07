@@ -105,7 +105,7 @@ def segment_image(img_rgb):
 
 # --- 6. واجهة المستخدم ---
 st.title("🔬 نظام فحص وتشخيص أورام الدماغ")
-st.info(f"المستخدم الحالي: {st.session_state.get('username', 'Guest')}")
+st.info(f"المستخدم الحالي: {st.session_state.get('user_email', 'Guest')}")
 
 uploaded_file = st.file_uploader("اختر صورة رنين مغناطيسي...", type=["jpg", "png", "jpeg"])
 
@@ -135,7 +135,7 @@ if uploaded_file is not None:
 
         # --- إضافة زر حفظ الحالة ---
         if st.button("💾 حفظ النتيجة في السجل الطبي"):
-            user_name = st.session_state.get('user_emai', 'Guest')
+            user_name = st.session_state.get('user_email', 'Guest')
             if save_patient_history(user_name, label_res, uploaded_file.name):
                 st.toast(f"تم حفظ حالة المريض بنجاح يا {user_name}!", icon="✅")
 
