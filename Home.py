@@ -1,14 +1,20 @@
 import streamlit as st
 import sqlite3
 import hashlib
+import os # أضف هذه المكتبة
 from email_validator import validate_email, EmailNotValidError
 
 st.set_page_config(page_title="BrainScan AI", layout="wide", page_icon="🧠")
 
+# --- التعديل الجوهري لتوحيد المسار ---
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if os.path.basename(current_dir) == "pages":
+    BASE_DIR = os.path.dirname(current_dir)
+else:
+    BASE_DIR = current_dir
 
-# تحديث اسم قاعدة البيانات ليكون بمسار كامل
-DB_NAME = 'brain_tumor.db'
-
+DB_NAME = os.path.join(BASE_DIR, 'brain_tumor.db')
+# ---------------------------------------
 # --- الدوال الأساسية ---
 def make_hashes(password):
     return hashlib.sha256(str.encode(password)).hexdigest()
