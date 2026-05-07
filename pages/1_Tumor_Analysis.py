@@ -144,22 +144,13 @@ if uploaded_file is not None:
 
     st.divider()
     
-    col1, col2 = st.columns(2)
+    col11, col22 = st.columns(2)
  
-    with col1:
+    with col11:
         st.page_link("Home.py", label="العودة للرئيسية", icon="🏠")
     
-    with col2:   
+    with col22:   
         # يمكنك تغيير هذا الرابط لصفحة التقارير مثلاً بدلاً من تكرار الرئيسية
         st.page_link("2_Analytics.py", label="📊 عرض التقارير", icon="📈") 
 
-    # st.divider()
-    
-    # col1, col2 = st.columns(2)
- 
-    # with col1:
-    #     st.page_link("pages/2_Analytics.py",icon="⬅️")
-    # with col2:   
-    #      st.page_link("Home.py", label="🏠 العودة للرئيسية", icon="⬅️")
 
-         
