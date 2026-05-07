@@ -90,14 +90,14 @@ else:
 
     st.divider()
 
-    # --- قسم الانتقال لصفحة التحليل ---
-    st.markdown("### 🛠️ الأدوات المتاحة")
-    c1, c2 = st.columns([1, 2])
-    with c1:
-        st.info("ابدأ الآن بتحليل صور الرنين المغناطيسي وتحديد مكان الورم بدقة.")
+    # # --- قسم الانتقال لصفحة التحليل ---
+    # st.markdown("### 🛠️ الأدوات المتاحة")
+    # c1, c2 = st.columns([1, 2])
+    # with c1:
+    #     st.info("ابدأ الآن بتحليل صور الرنين المغناطيسي وتحديد مكان الورم بدقة.")
         # زر للانتقال لصفحة التحليل (يجب أن يكون اسم الملف Tumor_Analysis.py في مجلد pages)
-        if st.button("الذهاب إلى صفحة التحليل 🔍", type="primary", use_container_width=True):
-            st.page_link("pages/1_Tumor_Analysis.py")
+    if st.button("الذهاب إلى صفحة التحليل 🔍", type="primary", use_container_width=True):
+          st.page_link("pages/1_Tumor_Analysis.py")
     
     st.divider()
 
