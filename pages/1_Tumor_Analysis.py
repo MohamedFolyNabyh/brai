@@ -151,7 +151,7 @@ if uploaded_file is not None:
     
     with col2:   
         # يمكنك تغيير هذا الرابط لصفحة التقارير مثلاً بدلاً من تكرار الرئيسية
-        st.page_link("2_Analytics.py"", label="📊 عرض التقارير", icon="📈") 
+        st.page_link("pages/2_Analytics.py", label="📊 عرض التقارير", icon="📈") 
 
     # st.divider()
     
