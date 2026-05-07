@@ -149,7 +149,7 @@ with bottom_col1:
 
 with bottom_col2:   
     # تأكد من أن اسم الملف صحيح في مجلد pages
-    st.page_link("pages/2_Analytics.py", label="📊 عرض التقارير", icon="📈")
+    st.page_link("2_Analytics.py", label="📊 عرض التقارير", icon="📈")
     
     # col11, col22 = st.columns(2)
  
