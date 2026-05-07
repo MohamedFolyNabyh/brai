@@ -70,14 +70,28 @@ except Exception as e:
 # --- 5. الدوال البرمجية للمعالجة ---
 IMG_SIZE = (256, 256)
 
+# def classify_image(img_rgb):
+#     resized_img = cv2.resize(img_rgb, (150, 150))
+#     input_img = np.expand_dims(resized_img, axis=0) 
+#     preds = cls_model.predict(input_img)
+#     p = np.argmax(preds, axis=1)[0]
+#     confidence=np.max(preds)
+#     if confidence<0.80:
+#         return "invalid image"
+#     labels = ['Glioma Tumor', 'No Tumor', 'Meningioma Tumor', 'Pituitary Tumor']
+#     return labels[p]
 def classify_image(img_rgb):
     resized_img = cv2.resize(img_rgb, (150, 150))
     input_img = np.expand_dims(resized_img, axis=0) 
     preds = cls_model.predict(input_img)
+    
+    confidence = np.max(preds) # أعلى نسبة يقين
     p = np.argmax(preds, axis=1)[0]
-    confidence=np.max(preds)
-    if confidence<0.80:
-        return "invalid image"
+    
+    # إذا كانت نسبة اليقين ضعيفة جداً (الموديل شاكك)
+    if confidence < 0.80: 
+        return "Invalid Image"
+    
     labels = ['Glioma Tumor', 'No Tumor', 'Meningioma Tumor', 'Pituitary Tumor']
     return labels[p]
 
