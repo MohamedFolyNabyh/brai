@@ -1,6 +1,11 @@
-numpy<2
-setuptools
+numpy==1.26.4
 wheel
+setuptools
+SimpleITK==2.5.4
+pybind11
+cython
+
+pyradiomics==3.0.1
 
 streamlit==1.57.0
 tensorflow-cpu==2.21.0
@@ -10,6 +15,3 @@ matplotlib
 email-validator
 plotly
 reportlab
-SimpleITK
-
-pyradiomics==3.0.1
