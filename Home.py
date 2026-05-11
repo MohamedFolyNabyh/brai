@@ -170,8 +170,12 @@ from email_validator import validate_email, EmailNotValidError
 # إعداد الصفحة كأول أمر
 st.set_page_config(page_title="BrainScan AI", layout="wide", page_icon="🧠")
 
-# اسم قاعدة بيانات موحد
-DB_NAME = 'brain_tumor.db'
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+if os.path.basename(current_dir) == "pages":
+    BASE_DIR = os.path.dirname(current_dir)
+else:
+    BASE_DIR = current_dir
 
 # --- الدوال الأساسية ---
 def make_hashes(password):
@@ -181,7 +185,7 @@ def check_hashes(password, hashed_text):
     return make_hashes(password) == hashed_text
 
 def init_db():
-    conn = sqlite3.connect(DB_NAME)
+    conn = sqlite3.connect(BASE_DIR)
     c = conn.cursor()
     c.execute('CREATE TABLE IF NOT EXISTS users (email TEXT PRIMARY KEY, password TEXT)')
     # إنشاء جدول التاريخ أيضاً لضمان عدم حدوث خطأ no such table
@@ -204,7 +208,7 @@ if not st.session_state.logged_in:
         e_login = st.text_input("البريد الإلكتروني", key="login_email")
         p_login = st.text_input("كلمة المرور", type="password", key="login_pass")
         if st.button("دخول", use_container_width=True):
-            conn = sqlite3.connect(DB_NAME)
+            conn = sqlite3.connect(BASE_DIR)
             c = conn.cursor()
             c.execute('SELECT password FROM users WHERE email =?', (e_login,))
             data = c.fetchone()
@@ -225,7 +229,7 @@ if not st.session_state.logged_in:
             if e_reg and p_reg:
                 try:
                     validate_email(e_reg)
-                    conn = sqlite3.connect(DB_NAME)
+                    conn = sqlite3.connect(BASE_DIR)
                     c = conn.cursor()
                     c.execute('INSERT INTO users VALUES (?,?)', (e_reg, make_hashes(p_reg)))
                     conn.commit()
