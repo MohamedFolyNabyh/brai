@@ -105,6 +105,7 @@
 import streamlit as st
 import pandas as pd
 import sqlite3
+import os
 import plotly.express as px
 
 if 'logged_in' not in st.session_state or not st.session_state.logged_in:
@@ -126,7 +127,7 @@ st.set_page_config(page_title="لوحة البيانات", layout="wide")
 st.title("📊 سجل التقارير والإحصائيات")
 
 def load_data():
-    conn = sqlite3.connect('brain_tumor.db')
+    conn = sqlite3.connect(DB_NAME)
     df = pd.read_sql_query("SELECT * FROM history WHERE username=?", 
                            conn, params=(st.session_state.user_email,))
     conn.close()
