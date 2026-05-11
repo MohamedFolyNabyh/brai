@@ -21,7 +21,7 @@
 ### 🏠 Home Page sign in and up
 ![Home](assets/sign_in.png)
 ### 🏠 Home Page 
-![Home](assets/Home.png)
+![Home](assets/home.png)
 ### 🔬 Tumor Analysis
 ![Analysis](assets/tumor_analysis.png)
 
