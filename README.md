@@ -12,7 +12,7 @@
 
 ## 🌐 Live Demo
 🚀 Try the app here:  
-👉 [Streamlit App](https://your-app-link.streamlit.app)
+👉 [Streamlit App](https://braintumorapp-eamrpcn3ub3r9mjcmfyzd9.streamlit.app/)
 
 ---
 
