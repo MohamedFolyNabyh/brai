@@ -62,12 +62,12 @@ df_valid['date'] = pd.to_datetime(df_valid['date'], errors='coerce')
 # =========================
 # 📊 Metrics
 # =========================
-c1, c2, c3 = st.columns(3)
+c1, c2, c3, c4 = st.columns(4)
 
-c1.metric("إجمالي الفحوصات", len(df_valid))
-c2.metric("حالات الأورام", len(df_valid[df_valid['diagnosis'] != 'No Tumor']))
-c3.metric("الحالات السليمة", len(df_valid[df_valid['diagnosis'] == 'No Tumor']))
-
+c1.metric("إجمالي الفحوصات", len(df))
+c2.metric("حالات الأورام", len(df[df['diagnosis'] != 'No Tumor']))
+c3.metric("الحالات السليمة", len(df[df['diagnosis'] == 'No Tumor']))
+c4.metric("صور غير مدعومة", len(df_unsupported))
 st.divider()
 
 # =========================
