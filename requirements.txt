@@ -1,4 +1,4 @@
-numpy
+numpy==1.26.4
 streamlit
 tensorflow-cpu
 opencv-python-headless
@@ -7,5 +7,5 @@ matplotlib
 email-validator
 plotly
 reportlab
-SimpleITK 
-pyRadiomics
+SimpleITK
+pyRadiomics==3.0.1
