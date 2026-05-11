@@ -14,3 +14,6 @@ pillow
 pandas
 scikit-learn
 matplotlib
+email_validator 
+gdown
+plotly
