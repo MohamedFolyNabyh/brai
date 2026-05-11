@@ -1,10 +1,12 @@
 numpy==1.26.4
+setuptools<81
 wheel
-setuptools
-SimpleITK==2.5.4
+Cython
 pybind11
-cython
 
+SimpleITK==2.5.4
+
+--no-build-isolation
 pyradiomics==3.0.1
 
 streamlit==1.57.0
