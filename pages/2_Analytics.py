@@ -122,9 +122,25 @@ if "pages" in BASE_DIR:
 DB_NAME = os.path.join(BASE_DIR, 'brain_tumor.db')
 
 
+
+conn = sqlite3.connect(DB_NAME)
+cursor = conn.cursor()
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS history (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT,
+    diagnosis TEXT,
+    date TEXT
+)
+""")
+
+conn.commit()
+conn.close()
 st.set_page_config(page_title="لوحة البيانات", layout="wide")
 
 st.title("📊 سجل التقارير والإحصائيات")
+
 
 def load_data():
     conn = sqlite3.connect(DB_NAME)
