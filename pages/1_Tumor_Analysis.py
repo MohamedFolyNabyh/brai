@@ -190,8 +190,6 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Tabl
 # إخفاء التحذيرات
 warnings.filterwarnings("ignore")
 
-# إخفاء التحذيرات لضمان واجهة نظيفة
-warnings.filterwarnings("ignore")
 
 
 
@@ -237,7 +235,7 @@ def load_all_models():
 
 def save_to_db(diagnosis, img_name):
     try:
-        conn = sqlite3.connect('brain_tumor.db')
+        conn = sqlite3.connect(DB_NAME)
         c = conn.cursor()
         
         # 1. التأكد من إنشاء الجدول أولاً لتجنب خطأ no such table
