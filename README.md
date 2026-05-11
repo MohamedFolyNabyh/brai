@@ -18,11 +18,12 @@
 
 ## 📸 Screenshots
 
-### 🏠 Home Page
-![Home](assets/home.png)
-
+### 🏠 Home Page sign in and up
+![Home](assets/sign_in.png)
+### 🏠 Home Page 
+![Home](assets/Home.png)
 ### 🔬 Tumor Analysis
-![Analysis](assets/analysis.png)
+![Analysis](assets/tumor_analysis.png)
 
 ### 📊 Analytics Dashboard
 ![Dashboard](assets/dashboard.png)
