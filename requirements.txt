@@ -1,19 +1,15 @@
 numpy==1.26.4
-setuptools<81
+setuptools
 wheel
-Cython
+cython
 pybind11
 
 SimpleITK==2.5.4
 
---no-build-isolation
 pyradiomics==3.0.1
 
-streamlit==1.57.0
-tensorflow-cpu==2.21.0
+streamlit
+pandas
+scikit-learn
 opencv-python-headless
-gdown
-matplotlib
-email-validator
-plotly
-reportlab
+tensorflow
