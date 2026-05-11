@@ -132,9 +132,9 @@ Final medical dashboard output
 ## 📊 Output Example
 
 - Tumor Type: Glioma  
-- Confidence: 97.8%  
 - Segmentation: Highlighted mask  
-- Radiomics: Extracted features  
+- Radiomics: Extracted features
+- report can download it
 
 ---
 
