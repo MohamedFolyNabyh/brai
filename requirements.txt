@@ -6,3 +6,4 @@ numpy
 matplotlib
 email-validator
 plotly
+reportlab
