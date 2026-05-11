@@ -1,183 +1,172 @@
-# 🧠 نظام تشخيص وتحديد أورام الدماغ باستخدام الذكاء الاصطناعي
-### Brain Tumor Classification & Segmentation System
+# 🧠 Brain Tumor AI — Classification & Segmentation System
 
-هذا المشروع هو تطبيق ويب تفاعلي يعتمد على **التعلم العميق (Deep Learning)** لمساعدة الأطباء في تحليل صور الرنين المغناطيسي (MRI). يقوم النظام بمهمتين أساسيتين:
-1. **التصنيف (Classification):** تحديد نوع الورم (Glioma, Meningioma, Pituitary) أو التأكد من سلامة الدماغ.
-2. **التقطيع (Segmentation):** تحديد مكان الورم بدقة ورسم قناع (Mask) ملون فوق منطقة الإصابة.
+![Python](https://img.shields.io/badge/python-3.11-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-red)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-DeepLearning-orange)
+![OpenCV](https://img.shields.io/badge/OpenCV-ImageProcessing-green)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
----
-
-## 🚀 المميزات (Features)
-*   **دقة عالية:** استخدام نماذج CNN متطورة مدربة على آلاف الصور الطبية.
-*   **واجهة تفاعلية:** مبنية باستخدام Streamlit لتسهيل الاستخدام.
-*   **تحليل فوري:** الحصول على النتائج في ثوانٍ معدودة.
-*   **نظام أمان:** صفحة تسجيل دخول مخصصة للأطباء المصرح لهم.
+> 🧬 AI-powered medical system for brain tumor detection using MRI images with classification, segmentation, and radiomics analysis.
 
 ---
 
-## 🛠️ التقنيات المستخدمة (Tech Stack)
-*   **Python:** اللغة الأساسية للمشروع.
-*   **TensorFlow/Keras:** لبناء وتشغيل نماذج الذكاء الاصطناعي (.h5).
-*   **OpenCV:** لمعالجة الصور وتحويلها (Grayscale, RGB, Resizing).
-*   **Streamlit:** لبناء واجهة المستخدم الويب.
-*   **Matplotlib & NumPy:** للتعامل مع المصفوفات الحسابية وعرض الصور.
+## 🌐 Live Demo
+🚀 Try the app here:  
+👉 [Streamlit App](https://your-app-link.streamlit.app)
 
 ---
 
-## 📂 هيكلة المشروع (Project Structure)
-```text
-brai/
-├── Home.py              # الصفحة الرئيسية ونظام تسجيل الدخول
-├── requirements.txt     # ملف المكتبات المطلوبة للتشغيل
-├── brain_tumor1.h5      # موديل التصنيف (Classification)
-├── segment_model.h5     # موديل تحديد المكان (Segmentation)
-└── pages/               # المجلد الفرعي لصفحات التطبيق
-    └── Tumor_Analysis.py # صفحة تحليل ورفع الصور
-Brain Tumor AI System
-Classification • Segmentation • Radiomics
+## 📸 Screenshots
 
+### 🏠 Home Page
+![Home](assets/home.png)
 
+### 🔬 Tumor Analysis
+![Analysis](assets/analysis.png)
 
+### 📊 Analytics Dashboard
+![Dashboard](assets/dashboard.png)
 
-🚀 Live Demo
-👉 Try the App Here:
+---
 
-(ضع هنا رابط Streamlit Cloud أو Render بعد النشر)
-https://your-app-link.streamlit.app
+## 🚀 Features
 
+- 🧠 Brain tumor classification (Glioma, Meningioma, Pituitary, No Tumor)
+- 🎯 Tumor segmentation using deep learning (U-Net)
+- 🧬 Radiomics feature extraction (shape + texture analysis)
+- 📊 Interactive analytics dashboard
+- 🔐 Secure login system for doctors
+- ⚡ Real-time MRI inference
 
-🧠 Overview
-This project is an AI-powered medical decision support system for brain tumor analysis using MRI images.
-It integrates:
+---
 
+## 🛠️ Tech Stack
 
-🧬 Deep Learning (CNN & U-Net)
+- 🐍 Python
+- 🤖 TensorFlow / Keras :contentReference[oaicite:0]{index=0}
+- 🌐 Streamlit :contentReference[oaicite:1]{index=1}
+- 👁️ OpenCV :contentReference[oaicite:2]{index=2}
+- 📊 Pandas / NumPy
+- 📉 Scikit-learn
+- 🧬 PyRadiomics
 
-📊 Radiomics Feature Extraction
+---
 
-🖼️ Medical Image Processing
+## 📂 Project Structure
 
-📈 Clinical Reporting Dashboard
-The system helps doctors:
-
-
-Detect tumors
-
-Classify tumor types
-
-Segment tumor regions
-
-Extract quantitative radiomic features
-✨ Features
-
-⚡ Fast MRI analysis (seconds)
-
-🎯 High accuracy deep learning models
-
-🧠 Multi-stage pipeline (Classification + Segmentation + Radiomics)
-
-📊 Interactive analytics dashboard
-
-🔐 Secure login system
-
-📑 Patient history tracking
-
-🧬 Advanced radiomics feature extraction
-🖥️ Screenshots
-🏠 Home Page
-🔬 MRI Analysis Page
-📊 Analytics Dashboard
-🧬 Segmentation Result
-🛠️ Tech Stack
-Python
-TensorFlow / Keras
-Streamlit
-OpenCV
-NumPy / Pandas
-Matplotlib / Plotly
-PyRadiomics
-Scikit-learn
-🧬 Radiomics Module
-Radiomics converts medical images into quantitative data features.
-
-Extracted Features:
-
-Shape-based features
-
-Texture analysis (GLCM, GLRLM)
-
-Intensity statistics
-
-Histogram features
-Why it matters:
-
-Improves diagnostic accuracy
-
-Adds explainability to AI decisions
-
-Bridges AI with clinical medicine
-📂 Project Structure
-brain_tumor_app/
+```bash
+brain-tumor-ai/
 │
-├── Home.py                  # Login + Main Interface
-├── requirements.txt        # Dependencies
-├── brain_tumor1.h5        # Classification model
-├── segment_model.h5       # Segmentation model
+├── Home.py                 # Login & main dashboard
+├── requirements.txt
+├── brain_tumor1.h5        # Classification model on drive 
+├── segment_model.h5       # Segmentation model  on drive
 │
-└── pages/
-    ├── 1_Tumor_Analysis.py
-    ├── 2_Analytics.py
+├── pages/
+│   ├── 1_Tumor_Analysis.py
+│   ├── 2_Analytics.py
+│
+├── assets/
+│   ├── home.png
+│   ├── analysis.png
+│   └── dashboard.png
+```
 
-⚙️ Installation
-1. Clone repository
+---
 
-git clone https://github.com/your-username/brain-tumor-ai.git
-cd brain-tumor-ai
+## ⚙️ Installation & Setup
 
-2. Install dependencies
+### 1️⃣ Clone repository
+```bash
+git clone https://github.com/MohamedFolyNabyh
+cd brain_tumor_app
+```
 
+---
+
+### 2️⃣ Install dependencies
+```bash
 pip install -r requirements.txt
+```
+
+---
+
+### 3️⃣ Install gdown
+```bash
+pip install gdown
+```
+
+---
+
+### 4️⃣ Download AI Models
+```bash
+gdown --id YOUR_CLASSIFICATION_MODEL_ID -O brain_tumor1.h5
+gdown --id YOUR_SEGMENTATION_MODEL_ID -O segment_model.h5
+```
+
+---
+
+## 🧬 System Pipeline
+
+### 1. Input
+MRI image upload
+
+### 2. Preprocessing
+Normalization + resizing using OpenCV
+
+### 3. Classification
+CNN model detects tumor type
+
+### 4. Segmentation
+U-Net generates tumor mask
+
+### 5. Radiomics
+Feature extraction (shape + texture)
+
+### 6. Reporting
+Final medical dashboard output
+
+---
+
+## 📊 Output Example
+
+- Tumor Type: Glioma  
+- Confidence: 97.8%  
+- Segmentation: Highlighted mask  
+- Radiomics: Extracted features  
+
+---
+
+## 🔐 Security
+
+- Login system with hashed passwords (SHA256)
+- Session-based authentication
+- Protected analytics dashboard
+
+---
+
+## 📌 Future Improvements
+
+- DICOM medical file support
+- Grad-CAM explainability
+- Cloud deployment API
+- Multi-class tumor grading (WHO levels)
+
+---
+
+## 👨‍💻 Author
+
+- **Mohamed Foly**
+- AI & Medical Imaging Developer
 
 
-3. Run app
+---
 
-streamlit run Home.py
+## ⭐ Support
 
+If you like this project:
+- ⭐ Star the repo
+- 🍴 Fork it
+- 📢 Share it
 
-📊 Supported Classes
-
-Glioma Tumor
-
-Meningioma Tumor
-
-Pituitary Tumor
-
-No Tumor (Healthy)
-🧠 System Pipeline
-MRI Image
-   ↓
-Preprocessing (OpenCV)
-   ↓
-Classification Model (CNN)
-   ↓
-Segmentation Model (U-Net)
-   ↓
-Radiomics Feature Extraction
-   ↓
-Final Clinical Report
-
-📈 Future Improvements
-
-3D MRI support
-
-Explainable AI (Grad-CAM visualization)
-
-Cloud deployment (AWS / GCP)
-
-Multi-disease extension
-
-Real hospital integration
-👨‍⚕️ Medical Disclaimer
-This system is a decision support tool only and should not replace professional medical diagnosis.
-📜 License
-This project is licensed under the MIT License اعملي ده علي هيئة ملف readme
+---
