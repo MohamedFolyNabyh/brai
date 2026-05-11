@@ -42,22 +42,26 @@ def load_data():
 df = load_data()
 
 # =========================
-# 🚫 Handle Empty Data
+# 🚫 Empty Check
 # =========================
 if df.empty:
     st.warning("لا توجد بيانات مسجلة لك بعد.")
     st.stop()
 
 # =========================
-# 🚫 Filter Low Confidence
+# 🚫 Unsupported filter
 # =========================
-df_valid = df[df['diagnosis'] != "Unsupported Image / Low Confidence"].copy()
-df_unsupported = df[df['diagnosis'] == "Unsupported Image / Low Confidence"].copy()
+UNSUPPORTED = ["Not supported image", "Unsupported Image / Low Confidence"]
+
+df_valid = df[~df['diagnosis'].isin(UNSUPPORTED)].copy()
+df_unsupported = df[df['diagnosis'].isin(UNSUPPORTED)].copy()
 
 # =========================
-# 📅 Fix date column
+# 📅 Safe date conversion
 # =========================
-df_valid['date'] = pd.to_datetime(df_valid['date'], errors='coerce')
+if 'date' in df_valid.columns:
+    df_valid['date'] = pd.to_datetime(df_valid['date'], errors='coerce')
+    df_valid = df_valid.dropna(subset=['date'])
 
 # =========================
 # 📊 Metrics
@@ -65,9 +69,10 @@ df_valid['date'] = pd.to_datetime(df_valid['date'], errors='coerce')
 c1, c2, c3, c4 = st.columns(4)
 
 c1.metric("إجمالي الفحوصات", len(df))
-c2.metric("حالات الأورام", len(df[df['diagnosis'] != 'No Tumor']))
-c3.metric("الحالات السليمة", len(df[df['diagnosis'] == 'No Tumor']))
+c2.metric("حالات الأورام", len(df_valid[df_valid['diagnosis'] != 'No Tumor']))
+c3.metric("الحالات السليمة", len(df_valid[df_valid['diagnosis'] == 'No Tumor']))
 c4.metric("صور غير مدعومة", len(df_unsupported))
+
 st.divider()
 
 # =========================
@@ -76,34 +81,42 @@ st.divider()
 col1, col2 = st.columns(2)
 
 with col1:
-    fig1 = px.pie(
-        df_valid,
-        names='diagnosis',
-        title="نسب توزيع الحالات"
-    )
-    st.plotly_chart(fig1, use_container_width=True)
+    if not df_valid.empty:
+        fig1 = px.pie(
+            df_valid,
+            names='diagnosis',
+            title="نسب توزيع الحالات"
+        )
+        st.plotly_chart(fig1, use_container_width=True)
+    else:
+        st.info("لا توجد بيانات صالحة للرسم")
 
 with col2:
-    fig2 = px.line(
-        df_valid.sort_values('date'),
-        x='date',
-        y='diagnosis',
-        title="تطور الحالات زمنياً"
-    )
-    st.plotly_chart(fig2, use_container_width=True)
+    if not df_valid.empty and 'date' in df_valid.columns:
+        fig2 = px.line(
+            df_valid.sort_values('date'),
+            x='date',
+            y='diagnosis',
+            title="تطور الحالات زمنياً"
+        )
+        st.plotly_chart(fig2, use_container_width=True)
+    else:
+        st.info("لا توجد بيانات زمنية كافية")
 
 # =========================
-# 📑 Table
+# 📑 Table (valid only)
 # =========================
-st.subheader("📑 الجدول التفصيلي")
+st.subheader("📑 البيانات الصالحة للتحليل")
 st.dataframe(df_valid, use_container_width=True)
 
 # =========================
-# 🚫 Unsupported cases (optional view)
+# 🚫 Unsupported cases
 # =========================
 if not df_unsupported.empty:
-    st.warning("⚠️ تم استبعاد صور غير مدعومة من التحليل")
-    st.subheader("🚫 Low Confidence Cases")
+    st.divider()
+    st.warning("⚠️ صور غير مدعومة تم استبعادها من التحليل")
+
+    st.subheader("🚫 الحالات غير المدعومة")
     st.dataframe(df_unsupported, use_container_width=True)
 
 # =========================
