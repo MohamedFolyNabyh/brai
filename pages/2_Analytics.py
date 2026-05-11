@@ -32,28 +32,30 @@ def load_data():
 
 df = load_data()
 
+df_valid = df[df['diagnosis'] != "Unsupported Image / Low Confidence"]
+df_unsupported = df[df['diagnosis'] == "Unsupported Image / Low Confidence"]
+
 if df.empty:
     st.warning("لا توجد بيانات مسجلة لك بعد.")
 else:
     # بطاقات سريعة
     c1, c2, c3 = st.columns(3)
-    c1.metric("إجمالي الفحوصات", len(df))
-    c2.metric("حالات الأورام", len(df[df['diagnosis'] != 'No Tumor']))
-    c3.metric("الحالات السليمة", len(df[df['diagnosis'] == 'No Tumor']))
-
+    c1.metric("إجمالي الفحوصات", len(df_valid))
+    c2.metric("حالات الأورام", len(df_valid[df_valid['diagnosis'] != 'No Tumor']))
+    c3.metric("الحالات السليمة", len(df_valid[df_valid['diagnosis'] == 'No Tumor']))
     # رسوم بيانية
     col1, col2 = st.columns(2)
     with col1:
-        fig1 = px.pie(df, names='diagnosis', title="نسب توزيع الحالات")
+        fig1 = px.pie(df_valid, names='diagnosis', title="نسب توزيع الحالات")
         st.plotly_chart(fig1)
     with col2:
         # ترتيب زمني بسيط
-        df['date'] = pd.to_datetime(df['date'])
-        fig2 = px.line(df.sort_values('date'), x='date', y='diagnosis', title="تطور الحالات زمنياً")
+        df['date'] = pd.to_datetime(df_valid['date'])
+        fig2 = px.line(df_valid.sort_values('date'), x='date', y='diagnosis', title="تطور الحالات زمنياً")
         st.plotly_chart(fig2)
 
     st.subheader("📑 الجدول التفصيلي")
-    st.dataframe(df, use_container_width=True)
+    st.dataframe(df_valid, use_container_width=True)
 
 st.divider()
 
