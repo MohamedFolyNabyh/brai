@@ -14,7 +14,7 @@ import gdown
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Table, TableStyle
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Table
 
 warnings.filterwarnings("ignore")
 
@@ -34,10 +34,10 @@ if 'logged_in' not in st.session_state or not st.session_state.logged_in:
     st.warning("⚠️ يرجى تسجيل الدخول أولاً.")
     st.stop()
 
-st.set_page_config(page_title="التحليل الشامل | BrainScan AI", layout="wide")
+st.set_page_config(page_title="Brain MRI Analysis", layout="wide")
 
 # =========================
-# Constants
+# Unsupported Classes
 # =========================
 UNSUPPORTED_CLASSES = ["Not supported image", "Unsupported Image / Low Confidence"]
 
@@ -78,8 +78,7 @@ def save_to_db(diagnosis, img_name):
     date_now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     c.execute('''
-        INSERT INTO history (username, diagnosis, date, image_name)
-        VALUES (?,?,?,?)
+        INSERT INTO history VALUES (?,?,?,?)
     ''', (st.session_state.user_email, diagnosis, date_now, img_name))
 
     conn.commit()
@@ -177,8 +176,7 @@ def create_pdf_report(img_orig, img_seg, diagnosis, radiomics, user_email):
             break
         data.append([k, str(v)])
 
-    table = Table(data)
-    elements.append(table)
+    elements.append(Table(data))
 
     doc.build(elements)
     buffer.seek(0)
@@ -203,12 +201,19 @@ if uploaded_file:
 
         diagnosis = classify_image(img_rgb, cls_model)
 
-        # 🚨 STOP if unsupported
-        if diagnosis in UNSUPPORTED_CLASSES:
+        is_supported = diagnosis not in UNSUPPORTED_CLASSES
+
+        # =========================
+        # ❌ UNSUPPORTED CASE
+        # =========================
+        if not is_supported:
             st.error("❌ الصورة غير مدعومة أو الثقة ضعيفة")
-            st.warning("لن يتم تنفيذ Segmentation أو Radiomics")
+            st.warning("لن يتم تنفيذ Segmentation أو Radiomics أو PDF")
             st.stop()
 
+        # =========================
+        # ✅ VALID CASE
+        # =========================
         viz_img, mask_raw = segment_image(img_rgb, seg_model)
 
         save_to_db(diagnosis, uploaded_file.name)
@@ -223,8 +228,11 @@ if uploaded_file:
     with col2:
         st.image(viz_img)
 
-    # ✅ Radiomics ONLY if valid
+    # =========================
+    # Radiomics + PDF ONLY
+    # =========================
     if np.any(mask_raw):
+
         st.divider()
 
         feats = get_radiomics_features(img_rgb, mask_raw)
@@ -232,7 +240,13 @@ if uploaded_file:
         st.subheader("Radiomics Features")
         st.table(list(feats.items())[:10])
 
-        pdf = create_pdf_report(img_rgb, viz_img, diagnosis, feats, st.session_state.user_email)
+        pdf = create_pdf_report(
+            img_rgb,
+            viz_img,
+            diagnosis,
+            feats,
+            st.session_state.user_email
+        )
 
         st.download_button(
             "Download Report",
@@ -241,8 +255,11 @@ if uploaded_file:
             "application/pdf"
         )
 
+# =========================
 # Navigation
+# =========================
 st.divider()
+
 c1, c2 = st.columns(2)
 
 with c1:
