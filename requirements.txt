@@ -1,12 +1,12 @@
 numpy==1.26.4
-setuptools
+setuptools>=65
 wheel
 cython
 pybind11
+
 SimpleITK==2.5.4
 
---no-build-isolation
-pyradiomics==3.0.1
+pyradiomics @ git+https://github.com/AIM-Harvard/pyradiomics.git
 
 streamlit
 tensorflow
