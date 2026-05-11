@@ -1,5 +1,7 @@
-numpy==1.26.4
-pyradiomics==3.0.1
+numpy<2
+setuptools
+wheel
+
 streamlit==1.57.0
 tensorflow-cpu==2.21.0
 opencv-python-headless
@@ -10,3 +12,4 @@ plotly
 reportlab
 SimpleITK
 
+pyradiomics==3.0.1
