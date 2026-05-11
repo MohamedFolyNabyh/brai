@@ -89,8 +89,8 @@ def classify_image(img_rgb, model):
     preds = model.predict(input_img)
     confidence=np.max(preds)
 
-    if confidence<0.8:
-        return "not valid image"
+    if confidence<0.90:
+        return "Not supported image"
     labels = ['Glioma Tumor', 'No Tumor', 'Meningioma Tumor', 'Pituitary Tumor']
     return labels[np.argmax(preds)]
 def segment_image(img_rgb, model):
