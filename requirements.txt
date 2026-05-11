@@ -7,3 +7,5 @@ matplotlib
 email-validator
 plotly
 reportlab
+SimpleITK 
+pyRadiomics
