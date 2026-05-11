@@ -82,13 +82,17 @@ def save_to_db(diagnosis, img_name):
         conn.close()
     except Exception as e:
         st.error(f"⚠️ خطأ أثناء محاولة حفظ البيانات: {e}")
+
 def classify_image(img_rgb, model):
     resized = cv2.resize(img_rgb, (150, 150))
     input_img = resized.reshape(1, 150, 150, 3)
     preds = model.predict(input_img)
+    confidence=np.max(preds)
+
+    if confidence<0.8:
+        return "not valid image"
     labels = ['Glioma Tumor', 'No Tumor', 'Meningioma Tumor', 'Pituitary Tumor']
     return labels[np.argmax(preds)]
-
 def segment_image(img_rgb, model):
     resized = cv2.resize(img_rgb, (256, 256))
     gray = cv2.cvtColor(resized, cv2.COLOR_RGB2GRAY).astype(np.float32) / 255.0
