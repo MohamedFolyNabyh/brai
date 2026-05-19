@@ -13,7 +13,7 @@ if os.path.basename(current_dir) == "pages":
     BASE_DIR = os.path.dirname(current_dir)
 else:
     BASE_DIR = current_dir
-# DB_NAME = os.path.join(BASE_DIR, 'brain_tumor.db')
+DB_NAME = os.path.join(BASE_DIR, 'brain_tumor.db')
 # --- الدوال الأساسية ---
 def make_hashes(password):
     return hashlib.sha256(str.encode(password)).hexdigest()
